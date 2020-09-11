@@ -13,27 +13,27 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 
     public Vector3 InputDirection { set; get; }
 
-#if (UNITY_ANDROID || UNITY_IOS || UNITY_WP8 || UNITY_WP8_1)
-    onMobile = true;
-#endif
 
     // Start is called before the first frame update
     private void Start()
     {
-        if(!onMobile)
+#if (UNITY_ANDROID || UNITY_IOS || UNITY_WP8 || UNITY_WP8_1)
+    onMobile = true;
+#endif
+        if (!onMobile)
         {
             gameObject.SetActive(false);
         }
-            bgImg = GetComponent<Image>();
-            joystickImg = transform.GetChild(0).GetComponent<Image>();
-            InputDirection = Vector3.zero;
-        
+        bgImg = GetComponent<Image>();
+        joystickImg = transform.GetChild(0).GetComponent<Image>();
+        InputDirection = Vector3.zero;
+
     }
 
     public void OnDrag(PointerEventData eventData)
-    {        
+    {
         Vector2 pos = Vector2.zero;
-        if(RectTransformUtility.ScreenPointToLocalPointInRectangle
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle
             (bgImg.rectTransform,
             eventData.position,
             eventData.pressEventCamera,
@@ -49,7 +49,7 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
             InputDirection = (InputDirection.magnitude > 1) ? InputDirection.normalized : InputDirection;
 
             joystickImg.rectTransform.anchoredPosition =
-                new Vector3(InputDirection.x * (bgImg.rectTransform.sizeDelta.x / 3), 
+                new Vector3(InputDirection.x * (bgImg.rectTransform.sizeDelta.x / 3),
                 InputDirection.z * (bgImg.rectTransform.sizeDelta.y / 3));
         }
     }

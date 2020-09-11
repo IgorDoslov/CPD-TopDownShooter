@@ -639,7 +639,7 @@ Transform:
   m_GameObject: {fileID: 8165882681206492050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 37.3, y: -1.908205e-16, z: -12.9}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 7, y: 4, z: 7}
   m_Children:
   - {fileID: 8161735687659099674}
   - {fileID: 8168379769519109752}
@@ -694,7 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d6da23a2cbdbf419e581162aa2eaaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 20
+  m_moveSpeed: 22
   m_animator: {fileID: 8071731332868513826}
   m_rigidBody: {fileID: 8185230147597053464}
 --- !u!136 &8120038349118203346
@@ -704,7 +704,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8165882681206492050}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 6994943c8eace194cb9ac7d40de8721c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.15
@@ -724,8 +724,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  currentHealth: 0
-  healthPotion: {fileID: 0}
+  currentHealth: 1
+  scoreValue: 15
+  ItemToDrop: {fileID: 0}
+  blood: {fileID: 2459954626238914700, guid: c3e5583d427bde249b8d860de0307d20, type: 3}
+  blood2: {fileID: 2459954626238914700, guid: c3e5583d427bde249b8d860de0307d20, type: 3}
+  hitBlood: {fileID: 2459954626238914700, guid: f7409129c8d012b4490dcb92996e9e3b,
+    type: 3}
 --- !u!114 &464954268283052916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,7 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b143ae6cfb7064ab256102f746551b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 13
+  moveSpeed: 14
   thePlayer: {fileID: 0}
 --- !u!114 &1267875843156929438
 MonoBehaviour:

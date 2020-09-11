@@ -41,6 +41,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""PauseMenuWeb"",
+                    ""type"": ""Value"",
+                    ""id"": ""aafb3d10-0d9d-434a-a6b1-f08521814448"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -232,15 +240,59 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""2d4944f8-2c6e-43ff-a9e1-08aa40dc153d"",
-                    ""path"": ""<Touchscreen>/press"",
+                    ""name"": ""2D Vector"",
+                    ""id"": ""6bd47e19-34b6-48ae-bec0-df1b4f714d41"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
+                    ""action"": ""PauseMenuWeb"",
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""59e203a8-666b-45fa-b186-0a0c6a2c6400"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseMenuWeb"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""2ac2cb08-f503-4f8a-867a-0e7e44242885"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseMenuWeb"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""9b6e7e12-ca89-4d49-a194-6c3c4c1efc89"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseMenuWeb"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""6666f868-8e48-4086-8ae7-5a8357221d52"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseMenuWeb"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -252,6 +304,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Rotation = m_Player.FindAction("Rotation", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_PauseMenuWeb = m_Player.FindAction("PauseMenuWeb", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -304,6 +357,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Rotation;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_PauseMenuWeb;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -311,6 +365,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Rotation => m_Wrapper.m_Player_Rotation;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @PauseMenuWeb => m_Wrapper.m_Player_PauseMenuWeb;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -329,6 +384,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @PauseMenuWeb.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenuWeb;
+                @PauseMenuWeb.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenuWeb;
+                @PauseMenuWeb.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenuWeb;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -342,6 +400,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @PauseMenuWeb.started += instance.OnPauseMenuWeb;
+                @PauseMenuWeb.performed += instance.OnPauseMenuWeb;
+                @PauseMenuWeb.canceled += instance.OnPauseMenuWeb;
             }
         }
     }
@@ -351,5 +412,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnRotation(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnPauseMenuWeb(InputAction.CallbackContext context);
     }
 }

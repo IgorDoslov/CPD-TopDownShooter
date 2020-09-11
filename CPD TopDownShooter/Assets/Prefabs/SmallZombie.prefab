@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 919153058609015991}
   - component: {fileID: -7265779564127689635}
   m_Layer: 0
-  m_Name: MobileFreeZombieSimpleMovement
+  m_Name: SmallZombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,7 +356,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8926608004805641297}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 6994943c8eace194cb9ac7d40de8721c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.15
@@ -377,6 +377,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   currentHealth: 0
+  scoreValue: 1
+  ItemToDrop: {fileID: 0}
+  blood: {fileID: 2459954626238914700, guid: c3e5583d427bde249b8d860de0307d20, type: 3}
+  blood2: {fileID: 2459954626238914700, guid: 4712011036e35d045bfae998d59d41ff, type: 3}
+  hitBlood: {fileID: 2459954626238914700, guid: f7409129c8d012b4490dcb92996e9e3b,
+    type: 3}
 --- !u!114 &919153058609015991
 MonoBehaviour:
   m_ObjectHideFlags: 0

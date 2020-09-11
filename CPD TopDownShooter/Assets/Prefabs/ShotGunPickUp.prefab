@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3594603658171828660}
   - component: {fileID: 8314528921763990687}
   - component: {fileID: 5325880488243525334}
+  - component: {fileID: -5914167649760003944}
   m_Layer: 0
   m_Name: ShotGunPickUp
   m_TagString: ShotGun
@@ -108,3 +109,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultGun: {fileID: 0}
   ShotGun: {fileID: 0}
+--- !u!54 &-5914167649760003944
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959722333883083672}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

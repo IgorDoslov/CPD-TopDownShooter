@@ -282,9 +282,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1747a14eabe2e504d8368c622576d8cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 300
   currentHealth: 0
-  ItemToDrop: {fileID: 959722333883083672, guid: 486a0ab0df585a94780ad300b5768e06,
+  scoreValue: 100
+  ItemToDrop: {fileID: 5756951613907414537, guid: 1fcf88f4d83d34e47963d46cc20434b9,
+    type: 3}
+  blood: {fileID: 2459954626238914700, guid: a9ffe9853b12efb46a7200874a605404, type: 3}
+  blood2: {fileID: 2459954626238914700, guid: b7c3f159701d0464f95ebaa62dfd2d40, type: 3}
+  hitBlood: {fileID: 2459954626238914700, guid: f7409129c8d012b4490dcb92996e9e3b,
     type: 3}
 --- !u!114 &991225616514136767
 MonoBehaviour:

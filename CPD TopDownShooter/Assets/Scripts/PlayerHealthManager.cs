@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerHealthManager : MonoBehaviour
 {
     public int maxHealth;
-    private int currentHealth;
+    public int currentHealth;
 
     public float flashLength;
     private float flashCounter;
@@ -15,6 +15,8 @@ public class PlayerHealthManager : MonoBehaviour
     private Color storedColor;
 
     public HealthBar healthBar;
+
+    public GameObject deathEffect;
 
     void Start()
     {
@@ -26,7 +28,7 @@ public class PlayerHealthManager : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
             FindObjectOfType<GameManager>().EndGame();
             gameObject.SetActive(false);
         }

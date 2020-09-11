@@ -9,8 +9,6 @@ public class BulletController : MonoBehaviour
     public int damageToGive;
 
 
-
-
     void Update()
     {
         //Move bullet forward
@@ -28,6 +26,12 @@ public class BulletController : MonoBehaviour
             collision.gameObject.tag == "HealthZombie" || collision.gameObject.tag == "Boss")
         {
             collision.gameObject.GetComponent<EnemyHealthManager>().HurtEnemy(damageToGive);
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerHealthManager>().HurtPlayer(damageToGive);
             Destroy(gameObject);
         }
     }

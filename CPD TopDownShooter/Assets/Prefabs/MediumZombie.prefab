@@ -919,7 +919,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2385768226001385871}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 6994943c8eace194cb9ac7d40de8721c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.15
@@ -940,7 +940,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   currentHealth: 0
-  healthPotion: {fileID: 0}
+  scoreValue: 10
+  ItemToDrop: {fileID: 0}
+  blood: {fileID: 2459954626238914700, guid: c3e5583d427bde249b8d860de0307d20, type: 3}
+  blood2: {fileID: 2459954626238914700, guid: 4712011036e35d045bfae998d59d41ff, type: 3}
+  hitBlood: {fileID: 2459954626238914700, guid: f7409129c8d012b4490dcb92996e9e3b,
+    type: 3}
 --- !u!114 &6213597453686018409
 MonoBehaviour:
   m_ObjectHideFlags: 0

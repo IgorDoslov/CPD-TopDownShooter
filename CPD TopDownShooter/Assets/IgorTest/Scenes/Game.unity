@@ -1008,7 +1008,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuScene: MainMenu
+  gameIsPaused: 0
   pauseMenuUI: {fileID: 414912459}
+  pauseMenu: {fileID: 0}
+  pauseFirstButton: {fileID: 0}
+  touchPauseButton: {fileID: 0}
 --- !u!1 &1657745327
 GameObject:
   m_ObjectHideFlags: 0

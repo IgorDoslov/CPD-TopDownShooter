@@ -28,6 +28,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "PauseMenuWeb",
+                    "type": "Value",
+                    "id": "aafb3d10-0d9d-434a-a6b1-f08521814448",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -219,15 +227,59 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "2d4944f8-2c6e-43ff-a9e1-08aa40dc153d",
-                    "path": "<Touchscreen>/press",
+                    "name": "2D Vector",
+                    "id": "6bd47e19-34b6-48ae-bec0-df1b4f714d41",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Pause",
-                    "isComposite": false,
+                    "action": "PauseMenuWeb",
+                    "isComposite": true,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "59e203a8-666b-45fa-b186-0a0c6a2c6400",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseMenuWeb",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "2ac2cb08-f503-4f8a-867a-0e7e44242885",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseMenuWeb",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "9b6e7e12-ca89-4d49-a194-6c3c4c1efc89",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseMenuWeb",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "6666f868-8e48-4086-8ae7-5a8357221d52",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseMenuWeb",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

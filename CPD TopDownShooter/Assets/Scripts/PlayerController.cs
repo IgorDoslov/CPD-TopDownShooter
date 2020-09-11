@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public bool usePS4Controller = false;
     public bool useMouseController = false;
     public bool useTouchController = false;
+    bool onWeb = false;
+    float invertControls = 1.0f;
 
     public Controls controls;
 
@@ -28,6 +30,11 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+#if (UNITY_WEBGL)
+        onWeb = true;
+        invertControls = -1.0f;
+#endif
+
         rb = GetComponent<Rigidbody>();
         cam = FindObjectOfType<Camera>();
 
@@ -37,13 +44,17 @@ public class PlayerController : MonoBehaviour
         theGunObj.SetActive(true);
         theGun1Obj.SetActive(false);
         theGun.isFiring = false;
-      
+
     }
 
     void Update()
     {
         var dirMove = controls.Player.Move.ReadValue<Vector2>();
-        moveInput = new Vector3(dirMove.x, 0f, dirMove.y);
+
+        
+            moveInput = new Vector3(dirMove.x, 0f, dirMove.y * invertControls);
+        
+
         //store direction and speed inside of move velocity. move velocity applied in FixedUpdate()
 
         if (useTouchController)
@@ -60,16 +71,22 @@ public class PlayerController : MonoBehaviour
             if (rotationJoystick.InputDirection != Vector3.zero)
             {
                 theGun.isFiring = true;
+                theGun1.isFiring = true;
             }
             else
+            {
                 theGun.isFiring = false;
+                theGun1.isFiring = false;
+            }
 
         }
-        moveVelocity = moveInput * moveSpeed;
 
         //Rotate with Mouse
         if (useMouseController)
         {
+            if(onWeb)
+            moveInput = new Vector3(dirMove.x, 0f, dirMove.y);
+
             Ray cameraRay = cam.ScreenPointToRay(Input.mousePosition);
             Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
 
@@ -102,21 +119,28 @@ public class PlayerController : MonoBehaviour
         {
             //Get the current rotation from input and stores in a vector 3
             var dirRot = controls.Player.Rotation.ReadValue<Vector2>();
-            Vector3 playerDirection = Vector3.right * dirRot.x + Vector3.forward * dirRot.y;
 
-            //returns 1 if any rotation is being inputed from right joystick
+            Vector3 playerDirection = Vector3.right * dirRot.x + Vector3.forward * dirRot.y * invertControls;
+
             if (playerDirection.sqrMagnitude > 0.0f)
                 transform.rotation = Quaternion.LookRotation(playerDirection * Time.deltaTime, Vector3.up);
 
-            //If player has any rotation selected with right joystick shoot
             if (playerDirection.sqrMagnitude > 0.0f)
+            {
                 theGun.isFiring = true;
+                theGun1.isFiring = true;
+            }
 
             //If player has no current rotation selected with right joystick dont shoot
             if (playerDirection.sqrMagnitude == 0.0f)
+            {
                 theGun.isFiring = false;
+                theGun1.isFiring = false;
+            }
 
+           
         }
+        moveVelocity = moveInput * moveSpeed;
     }
 
 

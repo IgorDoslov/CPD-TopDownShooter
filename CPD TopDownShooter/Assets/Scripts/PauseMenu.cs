@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -11,20 +12,29 @@ public class PauseMenu : MonoBehaviour
     public bool gameIsPaused = false;
     public GameObject pauseMenuUI;
 
-    public GameObject pauseMenu;
+    public GameObject pauseMenuWeb;
 
     public GameObject pauseFirstButton;
+    public GameObject pauseFirstButtonWeb;
+
 
     public Controls controls;
 
     public GameObject touchPauseButton;
 
+
+    bool onWeb = false;
+
     private void Start()
     {
+#if (UNITY_WEBGL)
+        onWeb = true;
+#endif
         gameIsPaused = false;
         controls = new Controls();
         controls.Enable();
         controls.Player.Pause.performed += Pause_performed;
+
     }
 
     private void Pause_performed(InputAction.CallbackContext obj)
@@ -42,20 +52,40 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
-        pauseMenuUI.SetActive(true);
+        if (onWeb)
+        {
+            pauseMenuWeb.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(null);
+
+            EventSystem.current.SetSelectedGameObject(pauseFirstButtonWeb);
+        }
+        else
+        {
+            pauseMenuUI.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(null);
+
+            EventSystem.current.SetSelectedGameObject(pauseFirstButton);
+        }
+
         Time.timeScale = 0.0f;
         gameIsPaused = true;
 
-        EventSystem.current.SetSelectedGameObject(null);
-
-        EventSystem.current.SetSelectedGameObject(pauseFirstButton);
 
         touchPauseButton.SetActive(false);
+
     }
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);
+        if (onWeb)
+        {
+            pauseMenuWeb.SetActive(false);
+        }
+        else
+        {
+            pauseMenuUI.SetActive(false);
+        }
+
         Time.timeScale = 1.0f;
         gameIsPaused = false;
         touchPauseButton.SetActive(true);

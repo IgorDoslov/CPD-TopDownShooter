@@ -4,10 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class WaveSpawner : MonoBehaviour {
+public class WaveSpawner : MonoBehaviour
+{
 
 
-	public enum SpawnState { SPAWNING, WAITING, COUNTING };
+	public enum SpawnState
+	{ 
+		SPAWNING,
+		WAITING,
+		COUNTING
+	};
 
 	public Text theWaveText;
 	//public Text highscoreText;
@@ -17,7 +23,7 @@ public class WaveSpawner : MonoBehaviour {
 	public class Wave
 	{
 		public string name;				//name of wave
-		public GameObject enemy;			// refrence to prehab we want to initiate
+		public GameObject enemy;		// refrence to prehab we want to initiate
 		public int count;				// amount of waves
 		public float rate;				// spawn rate
 
@@ -118,7 +124,7 @@ public class WaveSpawner : MonoBehaviour {
 		{
 			searchCountdown = 1f;											//check if all enemy are dead every 1 second instead of every frame
 			if (GameObject.FindGameObjectWithTag("Giant") == null &&
-			GameObject.FindGameObjectWithTag("Boss") == null)			//checks if all enimies with the player tag enemy are alive or dead
+			GameObject.FindGameObjectWithTag("Boss") == null)				//checks if all enimies with the player tag enemy are alive or dead
 			{
 				return false;												// if enemy alive repeat step till enemies are dead check this every 1 second
 			}
